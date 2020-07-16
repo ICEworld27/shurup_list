@@ -6,21 +6,18 @@ namespace abs
     {
         static void Main(string[] args)
         {
-            GGList a = new GGList(5);
-            Console.WriteLine(a);
-            a.Add(5);
-            
-            Console.WriteLine(a);
-            a.Remove(a.Len()-1);
-            Console.WriteLine(a);
-            
-            a[0] = 5;
+            MEGA_GGList a = new MEGA_GGList(5);
+            Console.WriteLine(a["h"]);
 
             Console.WriteLine(a);
-            a.Remove(0);
+            a["h"].Add(5);
+
+            Console.WriteLine(a["h"]);
             Console.WriteLine(a);
-            a.Insert(1, 9);
+            a["h", 0] = 9;
+            Console.WriteLine(a["h"]);
             Console.WriteLine(a);
+
         }
     }
 }

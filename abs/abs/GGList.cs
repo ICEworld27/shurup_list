@@ -22,6 +22,7 @@ int[] numbers2 = numbers.ToArray<int>();
         {
             mas = new int[len];
         }
+
         public void Add(int numb)
         {
             Array.Resize(ref mas, mas.Length + 1);
