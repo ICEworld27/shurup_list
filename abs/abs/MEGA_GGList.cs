@@ -7,85 +7,57 @@ namespace abs
 {
     class MEGA_GGList
     {
-        private GGList memas;
-        private List<string> memaskey;
+        Dictionary<string, Komp_of_MEGA_GGList> s = new Dictionary<string, Komp_of_MEGA_GGList>();
         public MEGA_GGList(int len)
         {
-            memas = new GGList(len);
-            memaskey = new List<string>();
+            
+
             for (int i = 0; i < len; i++)
             {
-                memaskey.Add("-");
+                Komp_of_MEGA_GGList a = new Komp_of_MEGA_GGList(len);
+                s.Add(Convert.ToString(i), a);
             }
         }
-        public GGList this[string key]
+        public Komp_of_MEGA_GGList this[string key]
         {
-            get { if (memaskey.Contains(key)) { return memas; } else { memaskey.Add(key); return memas; }  }
-            set {}
+            
+            get { if (s.ContainsKey(key)) { return s[key]; } else { s.Add(key,new Komp_of_MEGA_GGList(1)); return s[key];}  }
+
 
         }
         public void Remove(string key)
         {
 
-            memaskey.Remove(key);
+            s.Remove(key);
         }
         public int Len()
         {
 
-            return memaskey.Count;
+            return s.Count;
         }
         public int this[string key, int index]
         {
             get {
-                List<int> good = new List<int>(0);
-                for (int i = 0; i < memaskey.Count; i++)
-                {
-                    if (memaskey[i] == key)
-                    {
-                        good.Add(i);
-                    } 
-                }
-                if (good.Contains(index))
-                {
-                    return memas[index];
-                }
-                else
-                {
-                    return -404;
-                }
+                List<int> z = s[key].get();
+                return z[index];
             }
-            set {
-                List<int> good = new List<int>(0);
-                for (int i = 0; i < memaskey.Count; i++)
-                {
-                    if (memaskey[i] == key)
-                    {
-                        good.Add(i);
-                    }
-                }
-                if (good.Count>=index)
-                {
-                    memas[good[index]] = value;
-                }
-                }
+            set
+            {
+                s[key].set(index, value);
+            }
         }
         public override string ToString()
         {
             string v = "[";
-            int c;
-            for (int i = 0; i < memaskey.Count - 1; i++)
+            
+            foreach (KeyValuePair<string, Komp_of_MEGA_GGList> s in s)
             {
-                v += " " + this.memaskey[i] + ",";
+                v += "\n{" + s.Value.ToString() + "}";
             }
-            if (memaskey.Count > 1)
-            {
-                v += " " + this.memaskey[memaskey.Count - 1] + "]";
-            }
-            else
-            {
-                v += "]";
-            }
+
+            v += "]";
             return v;
         }
     }
 }
+
