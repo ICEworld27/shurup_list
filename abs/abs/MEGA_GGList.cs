@@ -5,27 +5,28 @@ using System.Text;
 
 namespace abs
 {
-    class MEGA_GGList
+    class MEGA_GGList<T, U> // 1 - key; 2 - index
     {
-        Dictionary<string, Komp_of_MEGA_GGList> s = new Dictionary<string, Komp_of_MEGA_GGList>();
+        Dictionary<T, Komp_of_MEGA_GGList<U>> s = new Dictionary<T, Komp_of_MEGA_GGList<U>> ();
         public MEGA_GGList(int len)
         {
             
 
             for (int i = 0; i < len; i++)
             {
-                Komp_of_MEGA_GGList a = new Komp_of_MEGA_GGList(len);
-                s.Add(Convert.ToString(i), a);
+                Komp_of_MEGA_GGList<U> a = new Komp_of_MEGA_GGList<U>(len);
+
+                s.Add((T)Convert.ChangeType(i, typeof(T)),a);
             }
         }
-        public Komp_of_MEGA_GGList this[string key]
+        public Komp_of_MEGA_GGList<U> this[T key]
         {
             
-            get { if (s.ContainsKey(key)) { return s[key]; } else { s.Add(key,new Komp_of_MEGA_GGList(1)); return s[key];}  }
+            get { if (s.ContainsKey(key)) { return s[key]; } else { s.Add(key,new Komp_of_MEGA_GGList<U>(1)); return s[key];}  }
 
 
         }
-        public void Remove(string key)
+        public void Remove(T key)
         {
 
             s.Remove(key);
@@ -35,7 +36,7 @@ namespace abs
 
             return s.Count;
         }
-        public int this[string key, int index]
+        public int this[T key, int index]
         {
             get {
                 List<int> z = s[key].get();
@@ -50,7 +51,7 @@ namespace abs
         {
             string v = "[";
             
-            foreach (KeyValuePair<string, Komp_of_MEGA_GGList> s in s)
+            foreach (KeyValuePair<T, Komp_of_MEGA_GGList<U>> s in s)
             {
                 v += "\n{" + s.Value.ToString() + "}";
             }

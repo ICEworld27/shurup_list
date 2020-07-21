@@ -4,7 +4,7 @@ using System.Text;
 
 namespace abs
 {
-    class Komp_of_MEGA_GGList
+    class Komp_of_MEGA_GGList<Z>
     {
         
         private List<int> zn;

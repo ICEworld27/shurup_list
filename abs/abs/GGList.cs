@@ -4,9 +4,9 @@ using System.Text;
 
 namespace abs
 {
-    class GGList
+    class GGList<P>
     {
-        private int[] mas;
+        private P[] mas;
         //private int Len;
         /*
             int count = 0;
@@ -20,10 +20,10 @@ int[] numbers2 = numbers.ToArray<int>();
         */
         public GGList(int len)
         {
-            mas = new int[len];
+            mas = new P[len];
         }
 
-        public void Add(int numb)
+        public void Add(P numb)
         {
             Array.Resize(ref mas, mas.Length + 1);
             mas[mas.Length - 1] = numb;
@@ -37,7 +37,7 @@ int[] numbers2 = numbers.ToArray<int>();
             }
             Array.Resize(ref mas, mas.Length - 1);
         }
-        public void Insert(int ind, int numb)
+        public void Insert(int ind, P numb)
         {
             Array.Resize(ref mas, mas.Length + 1);
             for (int i = mas.Length - 1; i > ind; i--)
@@ -53,7 +53,7 @@ int[] numbers2 = numbers.ToArray<int>();
         {
            return mas.Length;
         }
-        public int this[int index]
+        public P this[int index]
         {
             get { return mas[index]; }
             set { mas[index] = value; }
