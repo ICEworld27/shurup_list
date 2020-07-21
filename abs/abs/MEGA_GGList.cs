@@ -36,10 +36,10 @@ namespace abs
 
             return s.Count;
         }
-        public int this[T key, int index]
+        public U this[T key, int index]
         {
             get {
-                List<int> z = s[key].get();
+                List<U> z = s[key].get();
                 return z[index];
             }
             set

@@ -7,24 +7,24 @@ namespace abs
     class Komp_of_MEGA_GGList<Z>
     {
         
-        private List<int> zn;
+        private List<Z> zn;
         public Komp_of_MEGA_GGList(int len)
         {
-            zn = new List<int>();
+            zn = new List<Z>();
         }
-        public void Add(int q)
+        public void Add(Z q)
         {
             zn.Add(q);
         }
-        public void Remove(int q)
+        public void Remove(Z q)
         {
             zn.Remove(q);
         }
-        public List<int> get()
+        public List<Z> get()
         {
             return zn;
         }
-        public void set(int index, int znach)
+        public void set(int index, Z znach)
         {
             if (zn.Count > index)
             {
